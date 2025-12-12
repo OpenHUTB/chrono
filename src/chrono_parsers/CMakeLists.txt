@@ -2,7 +2,7 @@
 # CMake configuration file for the Chrono::Parsers module
 #=============================================================================
 
-option(CH_ENABLE_MODULE_PARSERS "Enable the Chrono Parsers module" OFF)
+option(CH_ENABLE_MODULE_PARSERS "Enable the Chrono Parsers module" ON)
 
 # Return now if this module is not enabled
 if(NOT CH_ENABLE_MODULE_PARSERS)

@@ -15,31 +15,51 @@
 @rem 6. Run the script (./builChrono.bat).
 @rem -----------------------------------------------------------------------------------------
 
-set SOURCE_DIR="C:/Source/chrono"
-set BUILD_DIR="C:/Build/chrono"
-set INSTALL_DIR="C:/Install/chrono"
+set glslang_DIR="C:/Packages/glslang-master-windows-Release"
+
+:: ✓
+set SOURCE_DIR="D:/work/workspace/chrono"
+:: ✓
+set BUILD_DIR="D:/Build/chrono"
+:: ✓
+set INSTALL_DIR="D:/Install/chrono"
 
 @rem -------------------------------------------
 
-set EIGEN3_INSTALL_DIR="C:/Packages/eigen"
+:: ✓
+set EIGEN3_INSTALL_DIR="C:/Packages/eigen/include/eigen3"
+set EIGEN3_INCLUDE_DIR="%EIGEN3_INSTALL_DIR%/include/eigen3"
+set Eigen3_ROOT="%EIGEN3_INSTALL_DIR%"
 
 set BLAZE_ROOT="C:/Packages/blaze"
+:: ✓
 set SPECTRA_INCLUDE_DIR="C:/Packages/spectra/include"
+:: ✓
 set CRG_INSTALL_DIR="C:/Packages/openCRG"
 
-set SWIG_INSTALL_DIR="C:/Packages/swigwin"
+:: ✓
+set SWIG_INSTALL_DIR="C:/Packages/swigwin-4.4.1"
 
-set IRRLICHT_ROOT="C:/Packages/irrlicht"
+:: ✓
+set IRRLICHT_ROOT="C:/Packages/irrlicht-1.8.5"
+:: ✓
 set VSG_INSTALL_DIR="C:/Packages/vsg"
+:: ✓
 set GL_INSTALL_DIR="C:/Packages/gl"
 
+:: ✓
 set URDF_INSTALL_DIR="C:/Packages/urdf"
 
-set MATLAB_INSTALL_DIR="C:/Program Files/MATLAB/R2019a"
-set CASCADE_INSTALL_DIR="C:/OpenCASCADE-7.9.2/occt-vc14-64"
-set OPTIX_INSTALL_DIR="C:/Program Files/NVIDIA Corporation/OptiX SDK 7.5.0"
-set FASTDDS_INSTALL_DIR="C:/Program Files/eProsima/fastrtps 2.4.0"
-set PYTHON_EXECUTABLE_DIR="C:/Python39/python.exe"
+:: ✓
+set MATLAB_INSTALL_DIR="D:/work/workspace/matlab"
+:: ✓
+set CASCADE_INSTALL_DIR="C:/Packages/OpenCASCADE-7.9.2/opencascade-7.9.2-vc14-64"
+:: ✓
+set OPTIX_INSTALL_DIR="D:/software/OptiX_SDK_7.5.0"
+:: ✓
+set FASTDDS_INSTALL_DIR="C:/Packages/eProsima/Fast-DDS-2.14.5_install"
+:: ✓
+set PYTHON_EXECUTABLE_DIR="C:/Users/Administrator/.conda/envs/hutb_3.9/python.exe"
 
 @rem -------------------------------------------
 
@@ -51,23 +71,16 @@ cmake -G %BUILDSYSTEM% -B %BUILD_DIR% -S %SOURCE_DIR% ^
       -DCMAKE_INSTALL_PREFIX:PATH=%INSTALL_DIR% ^
       -DCH_ENABLE_MODULE_PARSERS:BOOL=ON ^
       -DCH_ENABLE_MODULE_IRRLICHT:BOOL=ON ^
-      -DCH_ENABLE_MODULE_VSG:BOOL=ON ^
       -DCH_ENABLE_MODULE_OPENGL:BOOL=ON ^
       -DCH_ENABLE_MODULE_VEHICLE:BOOL=ON ^
       -DCH_ENABLE_MODULE_POSTPROCESS:BOOL=ON ^
-      -DCH_ENABLE_MODULE_MULTICORE:BOOL=ON ^
-      -DCH_ENABLE_MODULE_FSI:BOOL=ON ^
-      -DCH_ENABLE_MODULE_FSI_SPH:BOOL=ON ^
-      -DCH_ENABLE_MODULE_FSI_TDPF:BOOL=ON ^
       -DCH_ENABLE_MODULE_DEM:BOOL=ON ^
       -DCH_ENABLE_MODULE_PARDISO_MKL:BOOL=ON ^
       -DCH_ENABLE_MODULE_CASCADE:BOOL=ON ^
       -DCH_ENABLE_MODULE_COSIMULATION:BOOL=ON ^
       -DCH_ENABLE_MODULE_SENSOR:BOOL=ON ^
-      -DCH_ENABLE_MODULE_MODAL:BOOL=ON ^
       -DCH_ENABLE_MODULE_MATLAB:BOOL=ON ^
       -DCH_ENABLE_MODULE_CSHARP:BOOL=ON ^
-      -DCH_ENABLE_MODULE_PYTHON:BOOL=ON ^
       -DCH_ENABLE_MODULE_SYNCHRONO:BOOL=ON ^
       -DBUILD_BENCHMARKING:BOOL=ON ^
       -DBUILD_TESTING:BOOL=ON ^
@@ -87,15 +100,13 @@ cmake -G %BUILDSYSTEM% -B %BUILD_DIR% -S %SOURCE_DIR% ^
       -DOpenCASCADE_DIR:PATH=%CASCADE_INSTALL_DIR%/cmake ^
       -DSpectra_INCLUDE_DIR:PATH=%SPECTRA_INCLUDE_DIR%/include ^
       -DMATLAB_SDK_ROOT:PATH=%MATLAB_INSTALL_DIR%/extern ^
-      -Dvsg_DIR:PATH=%VSG_INSTALL_DIR%/lib/cmake/vsg ^
-      -DvsgImGui_DIR:PATH=%VSG_INSTALL_DIR%/lib/cmake/vsgImGui ^
-      -DvsgXchange_DIR:PATH=%VSG_INSTALL_DIR%%/lib/cmake/vsgXchange ^
       -Durdfdom_DIR:PATH=%URDF_INSTALL_DIR%/CMake ^
       -Durdfdom_headers_DIR:PATH=%URDF_INSTALL_DIR%/CMake ^
       -Dconsole_bridge_DIR:PATH=%URDF_INSTALL_DIR%/CMake ^
       -Dtinyxml2_DIR:PATH=%URDF_INSTALL_DIR%/CMake ^
       -DSWIG_EXECUTABLE:FILEPATH=%SWIG_INSTALL_DIR%/swig.exe ^
-      -DPYTHON_EXECUTABLE:PATH=%PYTHON_EXECUTABLE_DIR%
+      -DPYTHON_EXECUTABLE:PATH=%PYTHON_EXECUTABLE_DIR%^
+      -Dglslang_DIR:PATH=%glslang_DIR%
 
 rem ------------------------------------------------------------------------
 
